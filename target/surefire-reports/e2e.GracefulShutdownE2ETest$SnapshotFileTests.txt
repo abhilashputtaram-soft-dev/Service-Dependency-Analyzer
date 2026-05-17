@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: e2e.GracefulShutdownE2ETest$SnapshotFileTests
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.497 s -- in e2e.GracefulShutdownE2ETest$SnapshotFileTests
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.270 s -- in e2e.GracefulShutdownE2ETest$SnapshotFileTests

@@ -46,7 +46,7 @@ public class EventConsumer {
     private static final long SHUTDOWN_AWAIT_SECONDS = 10;
 
     private final EventQueueManager queueManager;
-    private final EventProcessor    processor;
+    private final EventProcessor processor;
     private final IngestionProperties properties;
 
     private final ExecutorService executorService;
@@ -89,13 +89,13 @@ public class EventConsumer {
      */
     @PreDestroy
     public void shutdown() {
-        log.info("EventConsumer shutdown initiated remainingQueueSize={}", queueManager.size());
+        log.info("EventConsumer shutting down — draining queue (size={})", queueManager.size());
         running = false;
         executorService.shutdown();
 
         try {
             if (!executorService.awaitTermination(SHUTDOWN_AWAIT_SECONDS, TimeUnit.SECONDS)) {
-                log.warn("Consumer threads did not terminate in {}s — forcing shutdown", SHUTDOWN_AWAIT_SECONDS);
+                log.warn("Consumer threads did not terminate in time — forcing shutdown");
                 executorService.shutdownNow();
             }
         } catch (InterruptedException e) {
@@ -118,8 +118,7 @@ public class EventConsumer {
      * and react to shutdown without stalling indefinitely.
      */
     private void consumeLoop() {
-        String threadName = Thread.currentThread().getName();
-        log.info("Consumer thread started thread={}", threadName);
+        log.debug("Consumer thread started: {}", Thread.currentThread().getName());
         while (running) {
             try {
                 Event event = queueManager.consume(POLL_TIMEOUT_MS, TimeUnit.MILLISECONDS);
@@ -128,11 +127,11 @@ public class EventConsumer {
                 }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
-                log.warn("Consumer thread interrupted thread={}", threadName);
+                log.debug("Consumer thread interrupted: {}", Thread.currentThread().getName());
                 break;
             }
         }
-        log.info("Consumer thread stopped thread={}", threadName);
+        log.debug("Consumer thread exiting: {}", Thread.currentThread().getName());
     }
 
     /**

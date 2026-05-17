@@ -68,11 +68,16 @@ public class TelemetryStore {
      * @param telemetry the telemetry data point to store
      */
     public void record(String service, EventTelemetry telemetry) {
-        store.computeIfAbsent(service, k -> new ConcurrentLinkedDeque<>())
-                .addLast(telemetry);
-        evictExpired(service);
-        log.debug("Recorded telemetry for {}: latency={}ms status={}", service, telemetry.getLatency(),
+        try{
+            store.computeIfAbsent(service, k -> new ConcurrentLinkedDeque<>())
+                    .addLast(telemetry);
+            evictExpired(service);
+            log.debug("Recorded telemetry for {}: latency={}ms status={}", service, telemetry.getLatency(),
                 telemetry.getStatus());
+        }catch (Exception e){
+            log.warn("Failed to record telemetry for service {}: {}", service, e.getMessage());
+            return;
+        }
     }
 
     // -----------------------------------------------------------------------

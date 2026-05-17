@@ -105,7 +105,7 @@ class EventProcessorTest {
         void dependencyObserved_withLatencyAndStatus_recordsTelemetry() {
             processor.process(observed("e1", 120L, EventStatus.OK));
 
-            verify(telemetryStore).record(eq("svc-a"), any());
+            verify(telemetryStore).record(eq("svc-b"), any());
         }
 
         @Test

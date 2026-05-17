@@ -143,7 +143,7 @@ public class GraphStateManager {
 
             if (existing == null) {
                 // First observation for this (source, target) pair
-                Instant firstSeen = event.getTimestamp() != null ? event.getTimestamp() : Instant.now();
+                Instant firstSeen = Instant.now();
                 Edge newEdge = new Edge(
                         source,
                         target,
@@ -161,7 +161,7 @@ public class GraphStateManager {
                 long newCount    = existing.getRequestCount() + 1;
                 double newAvg    = (existing.getAvgLatencyMs() * existing.getRequestCount() + latencyOrZero(event)) / newCount;
                 long newErrors   = existing.getErrorCount() + (isError(event) ? 1L : 0L);
-                Instant lastSeen = event.getTimestamp() != null ? event.getTimestamp() : Instant.now();
+                Instant lastSeen = Instant.now();
 
                 Edge updated = new Edge(source, target, newAvg, newCount, newErrors, lastSeen);
                 graphStore.putEdge(updated);

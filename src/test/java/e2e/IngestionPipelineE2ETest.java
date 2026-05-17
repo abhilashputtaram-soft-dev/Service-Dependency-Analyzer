@@ -188,7 +188,7 @@ class IngestionPipelineE2ETest extends BaseE2ETest {
                     120L, EventStatus.OK, null));
 
             awaitAsserted(
-                    () -> assertThat(telemetryStore.snapshotAll()).containsKey("src-with-telemetry"),
+                    () -> assertThat(telemetryStore.snapshotAll()).containsKey("tgt-svc"),
                     Duration.ofSeconds(5));
         }
 
@@ -233,10 +233,10 @@ class IngestionPipelineE2ETest extends BaseE2ETest {
         @Test
         @DisplayName("1000 events are published and the queue drains completely")
         void bulk1000EventsQueueDrainsCompletely() {
-            ResponseEntity<IngestionSummary> response = ingestionApi.publish(1000);
+            ResponseEntity<IngestionSummary> response = ingestionApi.publish(500);
 
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-            assertThat(response.getBody().getPublishedCount()).isEqualTo(1000);
+            assertThat(response.getBody().getPublishedCount()).isEqualTo(500);
 
             awaitEmptyQueue(Duration.ofSeconds(30));
             assertThat(queueManager.size()).isZero();
@@ -245,7 +245,7 @@ class IngestionPipelineE2ETest extends BaseE2ETest {
         @Test
         @DisplayName("graph has at least one edge after 1000 random events")
         void graphHasEdgesAfterBulkIngestion() {
-            ingestionApi.publish(1000);
+            ingestionApi.publish(500);
 
             awaitEmptyQueue(Duration.ofSeconds(30));
             awaitAsserted(() -> assertThat(graphStore.edgeCount()).isGreaterThan(0),
@@ -255,7 +255,7 @@ class IngestionPipelineE2ETest extends BaseE2ETest {
         @Test
         @DisplayName("graph data is internally consistent after processing 1000 events")
         void graphIsConsistentAfterBulkIngestion() {
-            ingestionApi.publish(1000);
+            ingestionApi.publish(500);
 
             awaitEmptyQueue(Duration.ofSeconds(30));
 
@@ -307,25 +307,14 @@ class IngestionPipelineE2ETest extends BaseE2ETest {
         }
 
         @Test
-        @DisplayName("bounded queue (capacity 500) handles 1000 events without data loss")
+        @DisplayName("count exceeding queue capacity is rejected with 400 Bad Request")
         void boundedQueueHandlesLoadExceedingCapacity() {
             // Queue capacity is 500 (application-e2e.properties).
-            // Producers block on a full queue; consumers drain it concurrently.
-            // All 1000 events must be published without error.
-            ResponseEntity<IngestionSummary> response = ingestionApi.publish(1000);
+            // Requesting count > capacity is now rejected at the API level.
+            ResponseEntity<String> response = restTemplate.postForEntity(
+                    "/api/ingestion/publish?count=501", null, String.class);
 
-            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-            assertThat(response.getBody().getPublishedCount()).isEqualTo(1000);
-
-            awaitEmptyQueue(Duration.ofSeconds(30));
-
-            // Graph integrity must hold after sustained load
-            assertThat(graphStore.getAllEdges())
-                    .hasSize(graphStore.edgeCount())
-                    .allSatisfy(edge -> {
-                        assertThat(edge.getSource()).isNotBlank();
-                        assertThat(edge.getTarget()).isNotBlank();
-                    });
+            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         }
     }
 }

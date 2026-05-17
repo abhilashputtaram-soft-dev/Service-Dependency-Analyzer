@@ -86,8 +86,8 @@ public class EventProcessor {
             // 2. Record telemetry for events that carry latency/status data
             if (shouldRecordTelemetry(event)) {
                 telemetryStore.record(
-                        event.getSource(),
-                        new EventTelemetry(event.getTimestamp(), event.getLatencyMs(), event.getStatus())
+                        event.getTarget() != null ? event.getTarget() : event.getSource(),
+                        new EventTelemetry(Instant.now(), event.getLatencyMs(), event.getStatus())
                 );
             }
 

@@ -153,20 +153,24 @@ class GraphStateManagerTest {
         }
 
         @Test
-        void firstObservation_nullTimestamp_lastSeenFallsBackToNow() {
+        void firstObservation_lastSeenIsProcessingTime() {
+            Instant before = Instant.now();
             Event event = new Event("evt-1", EventType.DEPENDENCY_OBSERVED, "A", "B", 100L, EventStatus.OK, null);
             manager.processEvent(event);
 
-            assertThat(store.getEdge("A", "B").orElseThrow().getLastSeen()).isNotNull();
+            assertThat(store.getEdge("A", "B").orElseThrow().getLastSeen()).isAfterOrEqualTo(before);
         }
 
         @Test
-        void firstObservation_explicitTimestamp_lastSeenMatchesEvent() {
+        void firstObservation_explicitTimestamp_lastSeenIsProcessingTimeNotEventTime() {
             Instant ts = Instant.parse("2024-06-01T10:00:00Z");
+            Instant before = Instant.now();
             Event event = new Event("evt-1", EventType.DEPENDENCY_OBSERVED, "A", "B", 100L, EventStatus.OK, ts);
             manager.processEvent(event);
 
-            assertThat(store.getEdge("A", "B").orElseThrow().getLastSeen()).isEqualTo(ts);
+            Instant lastSeen = store.getEdge("A", "B").orElseThrow().getLastSeen();
+            assertThat(lastSeen).isNotEqualTo(ts);
+            assertThat(lastSeen).isAfterOrEqualTo(before);
         }
 
         @Test
@@ -193,12 +197,12 @@ class GraphStateManagerTest {
         }
 
         @Test
-        void updateObservation_nullTimestamp_lastSeenFallsBackToNow() {
-            Instant original = Instant.parse("2024-01-01T00:00:00Z");
-            manager.processEvent(new Event("evt-1", EventType.DEPENDENCY_OBSERVED, "A", "B", 100L, EventStatus.OK, original));
+        void updateObservation_lastSeenIsProcessingTime() {
+            Instant before = Instant.now();
+            manager.processEvent(new Event("evt-1", EventType.DEPENDENCY_OBSERVED, "A", "B", 100L, EventStatus.OK, null));
             manager.processEvent(new Event("evt-2", EventType.DEPENDENCY_OBSERVED, "A", "B", 200L, EventStatus.OK, null));
 
-            assertThat(store.getEdge("A", "B").orElseThrow().getLastSeen()).isNotNull();
+            assertThat(store.getEdge("A", "B").orElseThrow().getLastSeen()).isAfterOrEqualTo(before);
         }
 
         @Test

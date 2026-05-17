@@ -2,6 +2,7 @@ package com.defendermate.graph.controller;
 
 import com.defendermate.graph.exception.InvalidRequestException;
 import com.defendermate.graph.ingestion.EventRequest;
+import com.defendermate.graph.ingestion.IngestionProperties;
 import com.defendermate.graph.ingestion.IngestionService;
 import com.defendermate.graph.ingestion.IngestionSummary;
 import com.defendermate.graph.model.Event;
@@ -38,10 +39,13 @@ public class IngestionController {
 
     private final IngestionService ingestionService;
     private final SnapshotManager snapshotManager;
+    private final IngestionProperties ingestionProperties;
 
-    public IngestionController(IngestionService ingestionService, SnapshotManager snapshotManager) {
+    public IngestionController(IngestionService ingestionService, SnapshotManager snapshotManager,
+                               IngestionProperties ingestionProperties) {
         this.ingestionService = ingestionService;
         this.snapshotManager = snapshotManager;
+        this.ingestionProperties = ingestionProperties;
     }
 
     /**
@@ -58,7 +62,11 @@ public class IngestionController {
             summary = "Publish random events in bulk",
             description = "Generates the requested number of random service-dependency events and distributes " +
                     "them evenly across the configured producer threads for parallel ingestion. " +
-                    "count must be greater than 0.",
+                    "count must be greater than 0.\n\n" +
+                    "**Available Services:** payment-service, auth-service, order-service, inventory-service, " +
+            "notification-service, user-service, cart-service, catalog-service, " +
+            "shipping-service, billing-service, gateway-api, search-service, " +
+            "recommendation-service, analytics-service, cache-service",
             tags = {"Ingestion"})
     @ApiResponse(responseCode = "200", description = "Summary of the publish operation",
             content = @Content(mediaType = "application/json",
@@ -73,6 +81,11 @@ public class IngestionController {
             @RequestParam int count) {
         if (count <= 0) {
             throw new InvalidRequestException("count must be greater than 0");
+        }
+        int capacity = ingestionProperties.getQueueCapacity();
+        if (count > capacity) {
+            throw new InvalidRequestException(
+                    "count " + count + " exceeds queue capacity " + capacity);
         }
         return ResponseEntity.ok(ingestionService.generateAndPublish(count));
     }
