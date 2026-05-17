@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.defendermate</groupId>
+    <artifactId>service-dependency-analyzer</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>Service Dependency Analyzer</name>
+    <description>In-memory directed graph of service dependencies with real-time event ingestion and analytical queries</description>
+
+    <properties>
+        <java.version>21</java.version>
+        <skipUnitTests>false</skipUnitTests>
+        <maven-surefire-report-plugin.version>3.2.5</maven-surefire-report-plugin.version>
+    </properties>
+
+    <dependencies>
+        <!-- Spring Boot Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Actuator -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Jackson for JSON serialization -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+
+        <!-- Springdoc OpenAPI / Swagger UI -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+
+        <!-- Spring Boot Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- ===== Unit Tests: *Test.java, excludes *E2ETest.java ===== -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>${skipUnitTests}</skip>
+                    <excludes>
+                        <exclude>**/*E2ETest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- ===== E2E / Integration Tests: *E2ETest.java (mvn verify) ===== -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*E2ETest.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ===== HTML Reports (generated in post-integration-test phase) ===== -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven-surefire-report-plugin.version}</version>
+                <executions>
+                    <!-- Unit test HTML report: target/site/surefire-report.html -->
+                    <execution>
+                        <id>unit-test-html-report</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <linkXRef>false</linkXRef>
+                        </configuration>
+                    </execution>
+                    <!-- E2E test HTML report: target/site/failsafe-report.html -->
+                    <execution>
+                        <id>e2e-test-html-report</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>failsafe-report-only</goal>
+                        </goals>
+                        <configuration>
+                            <linkXRef>false</linkXRef>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- ===== Site Reporting (mvn site) ===== -->
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>${maven-surefire-report-plugin.version}</version>
+                <configuration>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report</report>
+                            <report>failsafe-report-only</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <!-- ===== Profiles ===== -->
+    <profiles>
+        <!-- Run only E2E tests: mvn verify -Pe2e-only -->
+        <profile>
+            <id>e2e-only</id>
+            <properties>
+                <skipUnitTests>true</skipUnitTests>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

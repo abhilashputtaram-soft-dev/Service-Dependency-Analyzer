@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: e2e.GracefulShutdownE2ETest$StateRestoreTests
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.116 s -- in e2e.GracefulShutdownE2ETest$StateRestoreTests

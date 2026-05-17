@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: e2e.IngestionPipelineE2ETest$BulkIngestionTests
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.059 s -- in e2e.IngestionPipelineE2ETest$BulkIngestionTests

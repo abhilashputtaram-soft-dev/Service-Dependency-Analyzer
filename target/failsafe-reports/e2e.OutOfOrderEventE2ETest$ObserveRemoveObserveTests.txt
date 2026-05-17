@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: e2e.OutOfOrderEventE2ETest$ObserveRemoveObserveTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.945 s -- in e2e.OutOfOrderEventE2ETest$ObserveRemoveObserveTests

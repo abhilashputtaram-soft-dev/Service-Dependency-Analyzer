@@ -1,0 +1,149 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------< [0;36mcom.defendermate:service-dependency-analyzer[0;1m >------------[m
+[[1;34mINFO[m] [1mBuilding Service Dependency Analyzer 1.0.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-clean-plugin:3.3.2:clean[m [1m(default-clean)[m @ [36mservice-dependency-analyzer[0;1m ---[m
+[[1;34mINFO[m] Deleting /home/abhilash/Documents/assignment/Service Dependency Analyzer/Service-Dependency-Analyzer/target
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mservice-dependency-analyzer[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 0 resource from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:compile[m [1m(default-compile)[m @ [36mservice-dependency-analyzer[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module! :source
+[[1;34mINFO[m] Compiling 41 source files with javac [debug release 21] to target/classes
+[[1;34mINFO[m] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mservice-dependency-analyzer[0;1m ---[m
+[[1;34mINFO[m] skip non existing resourceDirectory /home/abhilash/Documents/assignment/Service Dependency Analyzer/Service-Dependency-Analyzer/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:testCompile[m [1m(default-testCompile)[m @ [36mservice-dependency-analyzer[0;1m ---[m
+[[1;34mINFO[m] Changes detected - recompiling the module! :dependency
+[[1;34mINFO[m] Compiling 4 source files with javac [debug release 21] to target/test-classes
+[[1;34mINFO[m] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.1.2:test[m [1m(default-test)[m @ [36mservice-dependency-analyzer[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$HealthEdgeCaseTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.515 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$HealthEdgeCaseTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$HealthBasicTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$HealthBasicTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$CyclesEdgeCaseTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.155 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$CyclesEdgeCaseTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$CyclesBasicTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.120 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$CyclesBasicTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$CriticalServicesEdgeCaseTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.069 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$CriticalServicesEdgeCaseTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$CriticalServicesBasicTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.069 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$CriticalServicesBasicTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$ShortestPathEdgeCaseTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$ShortestPathEdgeCaseTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$ShortestPathBasicTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$ShortestPathBasicTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$DependentsEdgeCaseTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.107 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$DependentsEdgeCaseTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$DependentsBasicTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$DependentsBasicTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$EdgeCaseTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m12[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$EdgeCaseTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphQueryServiceTest$BasicReachabilityTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m8[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest$BasicReachabilityTests[m
+[[1;34mINFO[m] [1mTests run: [0;1m0[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.571 s -- in com.defendermate.graph.graph.[1mGraphQueryServiceTest[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStateManagerTest[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStateManagerTest$ConcurrentAccessTests[m
+09:38:19.915 [pool-104-thread-18] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=r17
+09:38:19.930 [pool-104-thread-2] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=r1
+09:38:19.931 [pool-104-thread-22] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=r21
+09:38:19.931 [pool-104-thread-26] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=r25
+09:38:19.957 [pool-105-thread-3] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=rem-2
+09:38:19.957 [pool-105-thread-6] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=rem-5
+09:38:19.958 [pool-105-thread-2] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=rem-1
+09:38:19.958 [pool-105-thread-5] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=rem-4
+09:38:19.958 [pool-105-thread-4] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=rem-3
+09:38:19.958 [pool-105-thread-10] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=rem-9
+09:38:19.959 [pool-105-thread-7] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=rem-6
+09:38:19.959 [pool-105-thread-8] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=rem-7
+09:38:19.959 [pool-105-thread-9] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=rem-8
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.368 s -- in com.defendermate.graph.graph.[1mGraphStateManagerTest$ConcurrentAccessTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStateManagerTest$RemoveServiceTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in com.defendermate.graph.graph.[1mGraphStateManagerTest$RemoveServiceTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStateManagerTest$ServiceMetadataTests[m
+09:38:20.206 [main] WARN com.defendermate.graph.graph.GraphStateManager -- SERVICE_METADATA event missing source — skipping. eventId=evt-1
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.016 s -- in com.defendermate.graph.graph.[1mGraphStateManagerTest$ServiceMetadataTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStateManagerTest$DependencyRemovedTests[m
+09:38:20.228 [main] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED event missing source/target — skipping. eventId=evt-1
+09:38:20.244 [main] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: X -> Y eventId=evt-1
+09:38:20.250 [main] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED event missing source/target — skipping. eventId=evt-1
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in com.defendermate.graph.graph.[1mGraphStateManagerTest$DependencyRemovedTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStateManagerTest$DependencyObservedTests[m
+09:38:20.275 [main] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_OBSERVED event missing source/target — skipping. eventId=evt-1
+09:38:20.304 [main] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_OBSERVED event missing source/target — skipping. eventId=evt-1
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s -- in com.defendermate.graph.graph.[1mGraphStateManagerTest$DependencyObservedTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStateManagerTest$DuplicateDetectionTests[m
+09:38:20.325 [main] WARN com.defendermate.graph.graph.GraphStateManager -- DEPENDENCY_REMOVED for non-existent edge: A -> B eventId=evt-2
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in com.defendermate.graph.graph.[1mGraphStateManagerTest$DuplicateDetectionTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStateManagerTest$DispatchTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in com.defendermate.graph.graph.[1mGraphStateManagerTest$DispatchTests[m
+[[1;34mINFO[m] [1mTests run: [0;1m0[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.548 s -- in com.defendermate.graph.graph.[1mGraphStateManagerTest[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStoreTest[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStoreTest$ConcurrentAccessTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.132 s -- in com.defendermate.graph.graph.[1mGraphStoreTest$ConcurrentAccessTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStoreTest$CountTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m10[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in com.defendermate.graph.graph.[1mGraphStoreTest$CountTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStoreTest$QueryTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m13[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.050 s -- in com.defendermate.graph.graph.[1mGraphStoreTest$QueryTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStoreTest$RemoveServiceTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 s -- in com.defendermate.graph.graph.[1mGraphStoreTest$RemoveServiceTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStoreTest$MetadataTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.050 s -- in com.defendermate.graph.graph.[1mGraphStoreTest$MetadataTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStoreTest$RemoveEdgeTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m9[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.068 s -- in com.defendermate.graph.graph.[1mGraphStoreTest$RemoveEdgeTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.graph.[1mGraphStoreTest$PutEdgeTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m7[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s -- in com.defendermate.graph.graph.[1mGraphStoreTest$PutEdgeTests[m
+[[1;34mINFO[m] [1mTests run: [0;1m0[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.469 s -- in com.defendermate.graph.graph.[1mGraphStoreTest[m
+[[1;34mINFO[m] Running com.defendermate.graph.telemetry.[1mTelemetryStoreTest[m
+[[1;34mINFO[m] Running com.defendermate.graph.telemetry.[1mTelemetryStoreTest$ConcurrentAccessTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.489 s -- in com.defendermate.graph.telemetry.[1mTelemetryStoreTest$ConcurrentAccessTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.telemetry.[1mTelemetryStoreTest$ServiceIsolationTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 s -- in com.defendermate.graph.telemetry.[1mTelemetryStoreTest$ServiceIsolationTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.telemetry.[1mTelemetryStoreTest$EvictionTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.039 s -- in com.defendermate.graph.telemetry.[1mTelemetryStoreTest$EvictionTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.telemetry.[1mTelemetryStoreTest$WindowFilteringTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in com.defendermate.graph.telemetry.[1mTelemetryStoreTest$WindowFilteringTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.telemetry.[1mTelemetryStoreTest$P95Tests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 s -- in com.defendermate.graph.telemetry.[1mTelemetryStoreTest$P95Tests[m
+[[1;34mINFO[m] Running com.defendermate.graph.telemetry.[1mTelemetryStoreTest$RateTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m5[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s -- in com.defendermate.graph.telemetry.[1mTelemetryStoreTest$RateTests[m
+[[1;34mINFO[m] Running com.defendermate.graph.telemetry.[1mTelemetryStoreTest$NoDataTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m2[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.defendermate.graph.telemetry.[1mTelemetryStoreTest$NoDataTests[m
+[[1;34mINFO[m] [1mTests run: [0;1m0[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.778 s -- in com.defendermate.graph.telemetry.[1mTelemetryStoreTest[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 226, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  23.196 s
+[[1;34mINFO[m] Finished at: 2026-05-17T09:38:21+05:30
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m

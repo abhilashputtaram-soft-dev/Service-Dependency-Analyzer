@@ -1,0 +1,1 @@
+{"capturedAt":"2026-05-17T12:05:24.507687743Z","edges":[{"source":"service A","target":"service B","avgLatencyMs":20.0,"requestCount":1,"errorCount":0,"lastSeen":"2026-05-17T10:00:00Z"}],"metadata":{},"telemetry":{"service A":[]},"processedEventIds":["550e8400-e29b-41d4-a716-446655440000"]}
