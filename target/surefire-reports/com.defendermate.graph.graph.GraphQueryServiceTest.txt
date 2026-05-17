@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.defendermate.graph.graph.GraphQueryServiceTest
--------------------------------------------------------------------------------
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.385 s -- in com.defendermate.graph.graph.GraphQueryServiceTest
